@@ -12,14 +12,14 @@ class Script(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome("/usr/bin/chromedriver")
         self.driver.maximize_window()
-        self.driver.get("http://www.amazon.com")
+        self.driver.get("http://www.dice.com")
         self.ei = ElementInteraction(self.driver)
 
     def test_first(self):
-        self.ei.select_option("nav-search-dropdown", "9", "index", "searchDropdownBox")
-        self.ei.enter_text("twotabsearchtextbox", "python selenium")
-        self.ei.click_object("#nav-search .nav-search-submit .nav-input")
-
+        self.ei.is_page_ready()
+        #self.ei.select_option("nav-search-dropdown", "9", "index", "searchDropdownBox")
+        self.ei.enter_text("search-field-keyword", "python selenium")
+        self.ei.click_object(".btn-primary")
         time.sleep(5)
 
     def tearDown(self):

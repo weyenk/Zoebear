@@ -21,9 +21,9 @@ class ElementInteraction(ElementIdentification):
             element = self.ei.uniquely_identify_element(attach_name)
 
         if element is None:
-            print(u"Could not find an object with '{0:s}' as an identifying marker.".format(attach_name))
+            print("Could not find an object with '" + attach_name + "' as an identifying marker.")
         else:
-            print(u"Click the '{0:s}' object".format(element.text))
+            print("Click the '" + element.text + "' " + element_type)
             element.click()
 
     def enter_text(self, attach_name, text, second_attach_name=None):
@@ -35,9 +35,9 @@ class ElementInteraction(ElementIdentification):
             element = self.ei.uniquely_identify_element(attach_name)
 
         if element is None:
-            print("Could not find a textbox with '%s' as an identifying marker.".format(attach_name))
+            print("Could not find a textbox with '" + attach_name + "' as an identifying marker.")
         else:
-            #print(u"Enter '{0:s}' in the '{1:s}' textbox".format(text, self.find_html_for(element.id)))
+            print("Enter '" + text + "' in the '" + self.find_html_for(element.get_attribute('id')) + "' textbox")
             element.send_keys(text)
 
     def select_option(self, attach_name, value, selection_type, second_attach_name=None, multiline=None):
@@ -49,24 +49,30 @@ class ElementInteraction(ElementIdentification):
             element = self.ei.uniquely_identify_element(attach_name)
 
         if element is None:
-            print(u"Could not find a dropdown with '{0:s}' as an identifying marker.".format(attach_name))
+            print("Could not find a dropdown with '" + attach_name + "' as an identifying marker.")
         else:
             selection = Select(element)
             if selection_type.lower() == "index":
                 selection.select_by_index(value)
-                #print(u"Select '{0:s}' from the '{1:s} dropdown'".format())
+                # print("Select '" + + "' from the '" + + "' dropdown")
             elif selection_type.lower() == "text":
                 selection.select_by_visible_text(value)
+                # print("Select '" + + "' from the '" + + "' dropdown")
             elif selection_type.lower() == "value":
                 selection.select_by_value(value)
+                # print("Select '" + + "' from the '" + + "' dropdown")
             elif selection_type.lower() == "deindex":
                 selection.deselect_by_index(value)
+                # print("Select '" + + "' from the '" + + "' dropdown")
             elif selection_type.lower() == "detext":
                 selection.deselect_by_visible_text(value)
+                # print("Select '" + + "' from the '" + + "' dropdown")
             elif selection_type.lower() == "devalue":
                 selection.deselect_by_value(value)
+                # print("Select '" + + "' from the '" + + "' dropdown")
             elif selection_type.lower == "deall":
                 selection.deselect_all()
+                # print("Deselected all values from the '" + + "' dropdown")
             else:
                 raise Exception("Unknown selection type.  Attach name:" + attach_name)
 
@@ -106,4 +112,4 @@ class ElementInteraction(ElementIdentification):
         elif len(self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))) > 0:
             return True
         else:
-            print("Could not find a link with '%s' as an identifying marker.", attach_name)
+            print("Could not find a link with '" + attach_name + "' as an identifying marker.")

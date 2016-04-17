@@ -1,5 +1,7 @@
 import re
 from selenium.selenium import selenium
+from selenium import webdriver
+
 class ElementIdentification:
 
         def __init__(self, driver):
@@ -29,6 +31,9 @@ class ElementIdentification:
             # Text content. Untested
             elif len(self.driver.find_elements_by_xpath("//*[contains(text(), " + attach_name + ")]")) >0:
                 element = self.driver.find_element_by_xpath("//*[contains(text(), " + attach_name + ")]")
+                # Label. Untested
+            elif len(self.driver.find_elements_by_xpath("//label[contains(text(), " + attach_name + ")]/@for")) > 0:
+                element = self.driver.find_element_by_xpath("//label[contains(text(), " + attach_name + ")]/@for")
             print(len(element))
             if len(element) <= 0:
                 return None
@@ -81,8 +86,18 @@ class ElementIdentification:
                     else:
                         continue
 
-        #def find_html_for(self, for_id):
-            # This may not work.  Untested
+        def find_html_for(self, for_id):
+            label_list = self.driver.find_elements_by_xpath("//*[@for='" + for_id + "']")
+            for label in label_list:
+                return label.text
 
+        def derive_element_type(self, element):
+            # Find object type. Untested
+            if element is not None:
+                element_type = element.get_attribute("type")
+                if element_type is None:
+                    print("further work needs to be done here")
 
-        #def derive_element_type(self):
+        def is_page_ready(self):
+            selenium.capture_network_traffic("plain")
+            print("stop")
