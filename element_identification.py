@@ -7,6 +7,28 @@ class ElementIdentification:
         def __init__(self, driver):
             self.driver = driver
 
+        def is_element_present(self, attach_name):
+            # CSS selector
+            if len(self.driver.find_elements_by_css_selector(attach_name)) > 0:
+                return True
+            # ID
+            elif len(self.driver.find_elements_by_id(attach_name)) > 0:
+                return True
+            # Link text
+            elif len(self.driver.find_elements_by_link_text(attach_name)) > 0:
+                return True
+            # Partial link text
+            elif len(self.driver.find_elements_by_partial_link_text(attach_name)) > 0:
+                return True
+            # Class name
+            elif len(self.driver.find_elements_by_class_name(re.sub("\s.*", "", attach_name))) > 0:
+                return True
+            # XPATH
+            elif len(self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))) > 0:
+                return True
+            else:
+                print("Could not find a link with '" + attach_name + "' as an identifying marker.")
+
         def find_element(self, attach_name):
             element = []
 
