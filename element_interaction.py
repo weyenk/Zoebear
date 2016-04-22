@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import hashlib
 import re
 from element_identification import ElementIdentification
-
+import pickle
 
 class ElementInteraction(ElementIdentification):
 
@@ -77,17 +77,10 @@ class ElementInteraction(ElementIdentification):
                 raise Exception("Unknown selection type.  Attach name:" + attach_name)
 
 
-    def compare_hash(self, preclick, postclick):
-        first = hashlib.md5  # (preclick).hexdigest()
-        first.update(preclick)
-        first.digest()
-        second = hashlib.md5(postclick).hexdigest()
-        timeout = 0
-        if preclick.id != postclick.id:  # & timeout != True:
-            hashlib.md5(self.driver.find_element_by_tagname('html')).hexdigist()
+    def assert_page_changed(self, preclick, postclick):
+        pickled_preclick = pickle(preclick)
+        pickled_postclick= pickle(postclick)
+        if pickled_preclick == pickled_postclick:
             return True
         else:
             return False
-            timeout += 1
-            if timeout > 100:
-                timeout = False
