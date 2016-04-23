@@ -1,6 +1,5 @@
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
-import re
 from element_identification import ElementIdentification
 import pickle
 
@@ -12,8 +11,6 @@ class ElementInteraction(ElementIdentification):
         self.ei = ElementIdentification(self.driver)
 
     def click_object(self, attach_name, second_attach_name=None):
-        element = None
-
         if second_attach_name is not None:
             element = self.ei.uniquely_identify_element(attach_name, second_attach_name)
         else:
@@ -24,7 +21,6 @@ class ElementInteraction(ElementIdentification):
             element.click()
 
     def enter_text(self, attach_name, text, second_attach_name=None):
-
         if second_attach_name is not None:
             element = self.ei.uniquely_identify_element(attach_name, second_attach_name)
         else:
@@ -35,7 +31,6 @@ class ElementInteraction(ElementIdentification):
             element.send_keys(text)
 
     def select_option(self, attach_name, value, selection_type, second_attach_name=None, multiline=None):
-
         if second_attach_name is not None:
             element = self.ei.uniquely_identify_element(attach_name, second_attach_name)
         else:

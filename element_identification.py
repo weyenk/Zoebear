@@ -62,10 +62,18 @@ class ElementIdentification:
             # Text content. Untested
             elif len(self.driver.find_elements_by_xpath("//*[contains(text(), '" + attach_name + "')]")) > 0:
                 element = self.driver.find_elements_by_xpath("//*[contains(text(), '" + attach_name + "')]")
-            # Label. Untested
-            elif len(self.driver.find_elements_by_xpath("//label[contains(text(), '" + attach_name + "')]/@for")) > 0:
-                element = self.driver.find_elements_by_xpath("//label[contains(text(), '" + attach_name + "')]/@for")
-
+            # Href
+            elif len(self.driver.find_elements_by_xpath("//*[@href='" + attach_name + "']")) > 0:
+                element = self.driver.find_elements_by_xpath("//*[@href='" + attach_name + "']")
+            # Src
+            elif len(self.driver.find_elements_by_xpath("//*[@src='" + attach_name + "']")) > 0:
+                element = self.driver.find_elements_by_xpath("//*[@src='" + attach_name + "']")
+            # Alt
+            elif len(self.driver.find_elements_by_xpath("//*[@alt='" + attach_name + "']")) > 0:
+                element = self.driver.find_elements_by_xpath("//*[@alt='" + attach_name + "']")
+            # Title
+            elif len(self.driver.find_elements_by_xpath("//*[@title='" + attach_name + "']")) > 0:
+                element = self.driver.find_elements_by_xpath("//*[@title='" + attach_name + "']")
             print(attach_name + ": " + str(len(element)) + " element(s) found")
             if len(element) <= 0:
                 return None
