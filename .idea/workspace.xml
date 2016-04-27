@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c75c8e66-07e8-4a45-afa2-34a87260636e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/element_map.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Zoebear.iml" afterPath="$PROJECT_DIR$/.idea/Zoebear.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/element_map.py" afterPath="$PROJECT_DIR$/element_map.py" />
     </list>
     <ignored path="Zoebear.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,9 +67,11 @@
       <file leaf-file-name="element_map.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/element_map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="856">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="442">
+              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -470,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1461361305254</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added element map intial commit&#10;">
+      <created>1461754620540</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1461754620540</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -548,7 +559,8 @@
     <MESSAGE value="Minor refactor" />
     <MESSAGE value="Added pickling" />
     <MESSAGE value="Improved complex matching&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved complex matching&#10;" />
+    <MESSAGE value="Added element map intial commit&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added element map intial commit&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -726,9 +738,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/element_map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="856">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="442">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

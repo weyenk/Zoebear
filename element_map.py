@@ -1,5 +1,5 @@
 import json
-
+import pymongo
 
 class ElementMap:
 
@@ -40,10 +40,9 @@ class ElementMap:
             i += 1
 
         current_page[self.driver.title] = page_objects
+        self.send_to_mongodb(current_page, "")
 
-        return current_page
-
-    def send_to_mongodb(self):
+    def send_to_mongodb(self, data_to_be_sent, connection_string):
         pass
 
     def retrieve_from_mongodb(self):
