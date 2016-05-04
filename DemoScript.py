@@ -18,8 +18,7 @@ class Script(unittest.TestCase):
     def test_first(self):
         self.ei.is_page_ready()
         #self.ei.select_option("nav-search-dropdown", "9", "index", "searchDropdownBox")
-        self.ei.enter_text("search-field-keyword", "python selenium")
-        self.ei.click_object(".btn-primary")
+        self.ei.click_object(["value", "I Agree", "id", "ctl00_Main_content_ucStaffSignNotice_btnAgree"])
         time.sleep(5)
 
     def tearDown(self):

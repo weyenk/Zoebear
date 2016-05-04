@@ -7,113 +7,78 @@ class ElementIdentification:
         def __init__(self, driver):
             self.driver = driver
 
-        def is_element_present(self, attach_name):
-            # CSS selector
-            if len(self.driver.find_elements_by_css_selector(attach_name)) > 0:
-                return True
-            # ID
-            elif len(self.driver.find_elements_by_id(attach_name)) > 0:
-                return True
-            # Link text
-            elif len(self.driver.find_elements_by_link_text(attach_name)) > 0:
-                return True
-            # Partial link text
-            elif len(self.driver.find_elements_by_partial_link_text(attach_name)) > 0:
-                return True
-            # Class name
-            elif len(self.driver.find_elements_by_class_name(re.sub("\s.*", "", attach_name))) > 0:
-                return True
-            # XPATH
-            elif len(self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))) > 0:
-                return True
-            else:
-                print("Could not find a link with '" + attach_name + "' as an identifying marker.")
-
-        def find_element(self, attach_name):
+        def find_element(self, id_type, attach_name):
             element = []
 
-            # ID
-            if len(self.driver.find_elements_by_id(attach_name)) > 0:
-                element = self.driver.find_elements_by_id(attach_name)
-            # CSS selector
-            elif len(self.driver.find_elements_by_css_selector(attach_name)) > 0:
-                element = self.driver.find_elements_by_css_selector(attach_name)
-            # Link text
-            elif len(self.driver.find_elements_by_link_text(attach_name)) > 0:
-                element = self.driver.find_elements_by_link_text(attach_name)
-            # Partial link text
-            elif len(self.driver.find_elements_by_partial_link_text(attach_name)) > 0:
-                element = self.driver.find_elements_by_partial_link_text(attach_name)
-            # Class name
-            elif len(self.driver.find_elements_by_class_name(re.sub("\s.*", "", attach_name))) > 0:
-                element = self.driver.find_elements_by_class_name(re.sub("\s.*", "", attach_name))
-            # XPATH
-            elif len(self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))) > 0:
-                element = self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))
-            # Value
-            elif len(self.driver.find_elements_by_xpath("//*[@value='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@value='" + attach_name + "']")
-            # Text
-            elif len(self.driver.find_elements_by_xpath("//*[@text='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@text='" + attach_name + "']")
-            # Name
-            elif len(self.driver.find_elements_by_xpath("//*[@name='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@name='" + attach_name + "']")
-            # Text content. Untested
-            elif len(self.driver.find_elements_by_xpath("//*[contains(text(), '" + attach_name + "')]")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[contains(text(), '" + attach_name + "')]")
-            # Href
-            elif len(self.driver.find_elements_by_xpath("//*[@href='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@href='" + attach_name + "']")
-            # Src
-            elif len(self.driver.find_elements_by_xpath("//*[@src='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@src='" + attach_name + "']")
-            # Alt
-            elif len(self.driver.find_elements_by_xpath("//*[@alt='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@alt='" + attach_name + "']")
-            # Title
-            elif len(self.driver.find_elements_by_xpath("//*[@title='" + attach_name + "']")) > 0:
-                element = self.driver.find_elements_by_xpath("//*[@title='" + attach_name + "']")
+            if id_type.lower() == 'xpath':
+                # XPATH
+                if len(self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))) > 0:
+                    element = self.driver.find_elements_by_xpath(re.sub("\s.*", "", attach_name))
+            elif attach_name.startswith("#") and id_type != 'text()':
+                # Contains
+                if len(self.driver.find_elements_by_xpath("//*[contains(@" + id_type + ", '" +
+                                                                  re.sub("^#", "", attach_name) + "')]")) > 0:
+                    element = self.driver.find_elements_by_xpath("//*[contains(@" + id_type + ", '" +
+                                                                 re.sub("^#", "", attach_name) + "')]")
+            elif attach_name.startswith("#") and id_type == 'text()':
+                # Innertext
+                if len(self.driver.find_elements_by_xpath("//*[contains(text(), '" +
+                                                                  re.sub("^#", "", attach_name) + "')]")) > 0:
+                    element = self.driver.find_elements_by_xpath("//*[contains(text(), '" +
+                                                         re.sub("^#", "", attach_name) + "')]")
+            else:
+                # Generic Search
+                if len(self.driver.find_elements_by_xpath("//*[@" + id_type + "='" + attach_name + "']")) > 0:
+                    element = self.driver.find_elements_by_xpath("//*[@" + id_type + "='" + attach_name + "']")
+
             print(attach_name + ": " + str(len(element)) + " element(s) found")
             if len(element) <= 0:
                 return None
             else:
                 return element
 
-        def uniquely_identify_element(self, attach_name, second_attach_name=None):
+        def uniquely_identify_element(self, param_array):
             # Establish variables
             matching_element = None
-            first_element = []
-            second_element = []
+            all_found_elements = []
+            found_elements = []
             complex_match = False
+            i = 0
+            j = 0
 
-            # Find all elements that match
-            first_element = self.find_element(attach_name)
-            if second_attach_name is not None:
-                second_element = self.find_element(second_attach_name)
+            # Build lists of elements
+            while i < len(param_array):
+                found_elements = self.find_element(param_array[i], param_array[i + 1])
+                all_found_elements.append(found_elements)
+                j += 1
+                i += 2
 
             # Determine element counts in each.  If either list is greater than one that mark complex match
-            if len(first_element) > 1:
-                complex_match = True
-            if len(second_element) > 1:
-                complex_match = True
-            if len(first_element) <= 0 and len(second_element) <= 0:
-                print("Could not find an object with '" + attach_name + "' or '" +
-                      second_attach_name + "' as an identifying markers.")
+            i = 0
+            j = len(all_found_elements) - 1
+            while i <= j and complex_match is False:
+                if len(all_found_elements[i]) > 1:
+                    complex_match = True
+                else:
+                    i += 1
 
             # If neither element requires complex matching, then run basic match here
             if not complex_match:
-                if len(second_element) == 0:
-                    matching_element = first_element[0]
+                if len(all_found_elements) == 1:
+                    matching_element = all_found_elements[0][0]
                     return matching_element
-                elif first_element == second_element:
-                    matching_element = first_element[0]
+                elif all_found_elements[0] == all_found_elements[1]:
+                    matching_element = all_found_elements[0][0]
                     return matching_element
-                elif first_element != second_element:
-                    print("Could not uniquely identify an singular element with '" + attach_name +
-                          "' or '" + second_attach_name + "' as an identifying markers.")
+
+                # if first_element == second_element:
+                #    matching_element = first_element[0]
+                #    return matching_element
+                # elif first_element != second_element:
+                #    print("Could not uniquely identify an singular element with '" + attach_name +
+                #          "' or '" + second_attach_name + "' as an identifying markers.")
             else:
-                matching_element = self.complex_element_match(first_element, second_element)
+                matching_element = self.complex_element_match(all_found_elements)
                 return matching_element
 
         def complex_element_match(self, first_elements, second_elements):
@@ -135,12 +100,14 @@ class ElementIdentification:
             for label in label_list:
                 return label.text
 
-        def derive_element_type(self, element):
+        def get_element_type(self, element):
             # Find object type. Untested
             if element is not None:
                 element_type = element.get_attribute("type")
                 if element_type is None:
                     print("further work needs to be done here")
+                else:
+                    return element_type
 
         def is_page_ready(self):
             print("stop")
