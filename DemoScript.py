@@ -16,8 +16,6 @@ class Script(unittest.TestCase):
         self.ei = ElementInteraction(self.driver)
 
     def test_first(self):
-        self.ei.is_page_ready()
-        #self.ei.select_option("nav-search-dropdown", "9", "index", "searchDropdownBox")
         self.ei.click_object(["value", "I Agree", "id", "ctl00_Main_content_ucStaffSignNotice_btnAgree"])
         time.sleep(5)
 

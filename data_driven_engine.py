@@ -12,7 +12,7 @@ def parse_data(to_be_parsed):
     else:
         return None
 
-file = open(r'C:\Users\nkruswicki\Documents\MongoTestDirectory\DemoScript.json', 'r')
+file = open(r'/home/weyenk/Documents/big_cat_country_script', 'r')
 raw_file_data = file.read()
 json_obj = json.loads(raw_file_data)
 i = 0

@@ -43,10 +43,10 @@ class ElementIdentification:
             all_found_elements = []
             found_elements = []
             complex_match = False
-            i = 0
-            j = 0
 
             # Build lists of elements
+            i = 0
+            j = 0
             while i < len(param_array):
                 found_elements = self.find_element(param_array[i], param_array[i + 1])
                 all_found_elements.append(found_elements)
