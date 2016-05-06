@@ -78,10 +78,10 @@ class ElementIdentification:
                 #    print("Could not uniquely identify an singular element with '" + attach_name +
                 #          "' or '" + second_attach_name + "' as an identifying markers.")
             else:
-                matching_element = self.complex_element_match(all_found_elements)
+                matching_element = self.__complex_element_match(all_found_elements)
                 return matching_element
 
-        def complex_element_match(self, first_elements, second_elements):
+        def __complex_element_match(self, first_elements, second_elements):
             # Determine if either list is empty
             if len(first_elements) <= 0 or len(second_elements) <= 0:
                 print("Identifying markers are not unique enough to find object")

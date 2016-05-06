@@ -1,0 +1,36 @@
+{
+	"browser":[{
+		"name":"chrome",
+		"version":"50",
+		"location":"/usr/bin/chromedriver"
+	}],
+	"site":[{
+		"url":"http://www.bigcatcountry.com/"
+	}],
+	"users":[{}],
+	"data":[
+	{
+		"identifier":[{
+			"id":"basic_search_query_footer",
+			"name":"q"
+		}],
+		"order":1,
+		"action":"enter text",
+		"text value":"Myles Jack"
+	},
+	{
+		"identifier":[{
+			"class":"m-site-nav__search__submit"
+		}],
+		"order":2,
+		"action":"click object"
+	},
+	{
+		"identifier":[{
+			"text()":"Next"
+		}],
+		"order":3,
+		"action":"click object"
+	}
+	]
+}

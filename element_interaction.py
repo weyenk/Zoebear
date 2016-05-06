@@ -63,6 +63,7 @@ class ElementInteraction(ElementIdentification):
                 print("Deselected all values from the '" + self.find_html_for(
                     element.get_attribute('id')) + "' dropdown")
             else:
+                # This should really just be reported and not raise an exception
                 raise Exception("Unknown selection type.  Attach name:" + attach_name)
 
     def assert_page_changed(self, preclick, postclick):
