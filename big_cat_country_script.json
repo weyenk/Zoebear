@@ -1,18 +1,18 @@
 {
-	"browser":[{
+	"browsers":[{
 		"name":"chrome",
 		"version":"50",
 		"location":"/usr/bin/chromedriver"
 	}],
-	"site":[{
+	"sites":[{
 		"url":"http://www.bigcatcountry.com/"
 	}],
-	"users":[{}],
 	"data":[
 	{
 		"identifier":[{
 			"id":"basic_search_query_footer",
-			"name":"q"
+			"name":"q",
+			"class":"m-site-nav__search__input"
 		}],
 		"order":1,
 		"action":"enter text",

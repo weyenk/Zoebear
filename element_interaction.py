@@ -25,7 +25,7 @@ class ElementInteraction(ElementIdentification):
         element = self.ei.uniquely_identify_element(param_array)
 
         if element is not None:
-            print("Enter '" + text_value + "' in the '" + self.find_html_for(element.get_attribute('id')) + "' textbox")
+            print("Enter '" + str(text_value) + "' in the '" + str(self.find_html_for(element.get_attribute('id'))) + "' textbox")
             element.send_keys(text_value)
 
     def select_option(self, param_array, selection_value, selection_type, multiline=None):
@@ -64,7 +64,7 @@ class ElementInteraction(ElementIdentification):
                     element.get_attribute('id')) + "' dropdown")
             else:
                 # This should really just be reported and not raise an exception
-                raise Exception("Unknown selection type.  Attach name:" + attach_name)
+                raise Exception("Unknown selection type.")
 
     def assert_page_changed(self, preclick, postclick):
         pickled_preclick = pickle.dumps(preclick)

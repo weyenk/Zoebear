@@ -5,7 +5,7 @@ email_address = ""
 
 dda = DataDrivenEngine("demo", "big_cat_country_script.json")
 dda.run_script()
-
+dda.quit()
 
 
 

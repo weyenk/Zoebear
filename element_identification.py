@@ -81,31 +81,53 @@ class ElementIdentification:
                 matching_element = self.__complex_element_match(all_found_elements)
                 return matching_element
 
-        def __complex_element_match(self, first_elements, second_elements):
-            # Determine if either list is empty
-            if len(first_elements) <= 0 or len(second_elements) <= 0:
-                print("Identifying markers are not unique enough to find object")
-                return None
-
-            # Loop over the first element in the first list
-            for f_element in first_elements:
-                for s_element in second_elements:
-                    if f_element.get_attribute('outerHTML') == s_element.get_attribute('outerHTML'):
-                        return f_element
-                    else:
-                        continue
+        def __complex_element_match(self, all_found_elements):
+            matches = {}
+            matching_element = None
+            list_total = len(all_found_elements) - 1
+            i = 0
+            # Loop over all lists
+            while i <= list_total:
+                j = 0
+                # Loop over all lists again
+                while j <= list_total:
+                    # verify you are not comparing the list against itself
+                    if i != j:
+                        # compare two lists
+                        for felement in all_found_elements[i]:
+                            for selement in all_found_elements[j]:
+                                if felement == selement:
+                                    if len(matches) <= 0: # No elements in dictionary
+                                        matches[felement] = (felement, 1)
+                                    else:
+                                        if felement in matches.keys(): # Already in the dictionary, increase count
+                                            match = matches.get(felement)
+                                            new_count = match[1] + 1
+                                            matches[felement] = (felement, new_count)
+                                        else: # Not already in dictionary, add it
+                                            matches[felement] = (felement, 1)
+                    j += 1
+                i += 1
+            for match in matches.values():
+                if matching_element is None:
+                    matching_element = match
+                else:
+                    if matching_element[1] < match[1]:
+                        matching_element = match
+            return matching_element[0]
 
         def find_html_for(self, for_id):
             label_list = self.driver.find_elements_by_xpath("//*[@for='" + for_id + "']")
+            # This needs work.  Currently its returning the first label
             for label in label_list:
                 return label.text
 
         def get_element_type(self, element):
             # Find object type. Untested
             if element is not None:
-                element_type = element.get_attribute("type")
+                element_type = element.get_attribute('type')
                 if element_type is None:
-                    print("further work needs to be done here")
+                    print('further work needs to be done here')
                 else:
                     return element_type
 
