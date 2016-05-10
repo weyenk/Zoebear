@@ -25,10 +25,6 @@ class ElementInteraction(ElementIdentification):
         # Check config for custom errors
         pass
 
-    def __dynamic_wait(self):
-        # Wait for page to reach ready state and wait for all rendering to complete
-        pass
-
     def __check_network_activity(self):
         # Determine if browser is still receiving informaiton
         pass
@@ -36,7 +32,9 @@ class ElementInteraction(ElementIdentification):
     def handle_dialog(self, param_array):
         # Determine
         #if
-        pass
+        action = ""
+        print(action)
+        return action
 
     def click_object(self, param_array):
 
@@ -51,8 +49,12 @@ class ElementInteraction(ElementIdentification):
             text_value = element.get_attribute('innerText').strip()
 
         if element is not None:
-            print("Click the '" + text_value + "' " + str(self.ei.get_element_type(element)))
+            action = "Click the '" + text_value + "' " + str(self.ei.get_element_type(element))
+            self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+            self.driver.execute_script(' window.scrollBy(0, -100);')
             element.click()
+            print(action)
+            return action
 
     def enter_text(self, param_array, text_value):
 
@@ -60,8 +62,13 @@ class ElementInteraction(ElementIdentification):
 
         if element is not None:
             # Determine if element is visible
-            print("Enter '" + str(text_value) + "' in the '" + str(self.find_html_for(element.get_attribute('id'))) + "' textbox")
+            action = "Enter '" + str(text_value) + "' in the '" + str(self.find_html_for(element.get_attribute('id'))) + "' textbox"
+            self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+            self.driver.execute_script(' window.scrollBy(0, -100);')
+            element.click()
             element.send_keys(text_value)
+            print(action)
+            return action
 
     def select_option(self, param_array, selection_value, selection_type, multiline=None):
 
@@ -70,28 +77,56 @@ class ElementInteraction(ElementIdentification):
         if element is not None:
             selection = Select(element)
             if selection_type.lower() == "index":
+                action = "Select '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
                 selection.select_by_index(selection_value)
-                print("Select '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                print(action)
+                return action
             elif selection_type.lower() == "text":
+                action = "Select '" + selection_value + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.select_by_visible_text(selection_value)
-                print("Select '" + selection_value + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
+                print(action)
+                return action
             elif selection_type.lower() == "value":
+                action = "Select '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.select_by_value(selection_value)
-                print("Select '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
+                print(action)
+                return action
             elif selection_type.lower() == "deindex":
                 # This doesnt make sense.  A function needs to be written to check all the options against the user supplied indexes
-                print("Deselect '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                action = "Deselect '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_by_index(selection_value)
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
+                print(action)
+                return action
             elif selection_type.lower() == "detext":
-                print("Deselect '" + selection_value + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                action = "Deselect '" + selection_value + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_by_visible_text(selection_value)
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
+                print(action)
+                return action
             elif selection_type.lower() == "devalue":
                 # This doesnt make sense.  A function needs to be written to check all the options against the user supplied values
-                print("Deselect '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                action = "Deselect '" + selection.all_selected_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_by_value(selection_value)
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
+                print(action)
+                return action
             elif selection_type.lower == "deall":
+                action = "Deselected all values from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_all()
-                print("Deselected all values from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown")
+                self.driver.execute_script('return arguments[0].scrollIntoView();', element)
+                self.driver.execute_script(' window.scrollBy(0, -100);')
+                print(action)
+                return action
             else:
                 # This should really just be reported and not raise an exception
                 raise Exception("Unknown selection type.")
