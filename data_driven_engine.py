@@ -12,7 +12,6 @@ class DataDrivenEngine(ElementInteraction):
         raw_file_data = file.read()
         self.json_obj = json.loads(raw_file_data)
 
-
     def __parse_data(self, to_be_parsed):
         results = re.findall("'(\w+.*?)'", to_be_parsed)
         if results:
@@ -22,20 +21,22 @@ class DataDrivenEngine(ElementInteraction):
             return None
 
     def run_script(self):
-
+        browser_objects = []
         # Instantiate webdriver
         if len(self.json_obj['browsers']) > 0:
             browser_count = len(self.json_obj['browsers']) - 1
             i = 0
+            # Launch i(th) browser
             while i <= browser_count:
                 browser_objects = self.__run_browsers(i)
                 # Gather site information
                 if len(self.json_obj['sites']) > 0:
                     site_count = len(self.json_obj['sites']) - 1
                     j = 0
+                    # Launch i(th) site
                     while j <= site_count:
                         self.__run_sites(j, browser_objects['driver'])
-                        # Pass data to ei
+                        # Pass i(th) data to ei
                         if len(self.json_obj['data']) > 0:
                             self.__run_data(browser_objects['ei'])
                         else:
@@ -46,7 +47,7 @@ class DataDrivenEngine(ElementInteraction):
                 i += 1
         else:
             raise Exception('No browsers too be tested')
-
+        self.__quit()
 
     def __run_browsers(self, counter):
         # Not all drivers are tested, specifically mobile and apple
@@ -71,7 +72,6 @@ class DataDrivenEngine(ElementInteraction):
         self.ei = ElementInteraction(self.driver)
         return {'driver': self.driver, 'ei': self.ei}
 
-
     def __run_sites(self, counter, driver):
         driver.get(self.json_obj['sites'][counter]['url'])
 
@@ -92,7 +92,17 @@ class DataDrivenEngine(ElementInteraction):
                         raise Exception("Step " + obj['order'] + " does not have a known action type.")
             i += 1
 
-        print(self.json_obj)
+        # print(self.json_obj)
 
-    def quit(self):
+    def __report_step(self, action_to_report):
+        # Output action to file
+        pass
+
+    def __email(self, email_address, email_subject, email_body, email_signature=None):
+        # Determine if signature is required
+        # Send email
+        pass
+
+
+    def __quit(self):
         self.driver.quit()
