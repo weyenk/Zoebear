@@ -2,10 +2,20 @@ import re
 from selenium.selenium import selenium
 import pickle
 
+
 class ElementIdentification:
 
         def __init__(self, driver):
             self.driver = driver
+
+        def __dynamic_wait(self):
+            pass
+
+        def __wait_for_page_load(self):
+            old_page = self.driver.find_elements_by_tagname('html')
+            new_page = self.driver.find_elements_by_tagname('html')
+            while old_page.id == new_page.id:
+                new_page = self.driver.find_elements_by_tagname('html')
 
         def find_element(self, id_type, attach_name):
             element = []
@@ -76,9 +86,9 @@ class ElementIdentification:
             if len(all_found_elements) == 1:
                 matching_element = all_found_elements[0][0]
                 return matching_element
-            elif all_found_elements[0] == all_found_elements[1]:
-                matching_element = all_found_elements[0][0]
-                return matching_element
+            #elif all_found_elements[0] == all_found_elements[1]:
+            #    matching_element = all_found_elements[0][0]
+            #    return matching_element
             else:
                 matching_element = self.__complex_element_match(all_found_elements)
                 return matching_element
@@ -116,9 +126,10 @@ class ElementIdentification:
                 else:
                     if matching_element[1] < match[1]:
                         matching_element = match
-            if len(matching_element) > 0:
+            if matching_element is not None:
                 return matching_element[0]
             else:
+                test = self.driver.find_elements_by_xpath('//*[*]')
                 print('Not enough information given to uniquely identify element')
 
         def find_html_for(self, for_id):
@@ -130,8 +141,11 @@ class ElementIdentification:
                 if label_list is not None:
                     concat_label = None
                     for label in label_list:
-                        concat_label += (' ' + label)
-                        return concat_label
+                        if concat_label is None:
+                            concat_label = str(label.get_attribute('innerText')).strip()
+                        else:
+                            concat_label += ' ' + str(label.get_attribute('innerText')).strip()
+                    return concat_label
                 else:
                     print('Could not find label for ' + for_id)
 
