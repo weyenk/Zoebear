@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c75c8e66-07e8-4a45-afa2-34a87260636e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/wait_for_page_load.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/element_interaction.py" afterPath="$PROJECT_DIR$/element_interaction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/element_map.py" afterPath="$PROJECT_DIR$/element_map.py" />
     </list>
     <ignored path="Zoebear.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +40,7 @@
       <file leaf-file-name="DemoScript.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DemoScript.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="198">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
@@ -51,7 +52,7 @@
       <file leaf-file-name="data_driven_engine.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_driven_engine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="847">
+            <state relative-caret-position="2646">
               <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -60,10 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="element_interaction.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="element_interaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/element_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1801">
+            <state relative-caret-position="847">
               <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
@@ -72,10 +73,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="element_map.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/element_map.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="element_identification.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/element_identification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2412">
+            <state relative-caret-position="3006">
               <caret line="167" column="25" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -105,12 +116,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/OLC.py" />
-        <option value="$PROJECT_DIR$/element_map.py" />
         <option value="$PROJECT_DIR$/big_cat_country_script.json" />
         <option value="$PROJECT_DIR$/DemoScript.py" />
         <option value="$PROJECT_DIR$/data_driven_engine.py" />
         <option value="$PROJECT_DIR$/element_identification.py" />
         <option value="$PROJECT_DIR$/element_interaction.py" />
+        <option value="$PROJECT_DIR$/element_map.py" />
       </list>
     </option>
   </component>
@@ -151,8 +162,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -181,10 +190,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -556,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1462919820333</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added functionality to move to non-visible elements and improved documentation">
+      <created>1462919885493</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1462919885493</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -604,7 +622,7 @@
     <frame x="79" y="27" width="1841" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26157278" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26491913" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3387978" sideWeight="0.5030675" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -652,7 +670,8 @@
     <MESSAGE value="Improved output scripts" />
     <MESSAGE value="Added output scripts, outputing to a file and initial email support commit" />
     <MESSAGE value="Added functionality to remove non-visible elements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to remove non-visible elements" />
+    <MESSAGE value="Added functionality to move to non-visible elements and improved documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to move to non-visible elements and improved documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1072,24 +1091,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/element_map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py" />
-    <entry file="file://$PROJECT_DIR$/wait_for_page_load.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wait_for_page_load.py" />
     <entry file="file://$PROJECT_DIR$/DemoScript.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="198">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
@@ -1099,7 +1105,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_driven_engine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
+        <state relative-caret-position="2646">
           <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -1107,9 +1113,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/element_interaction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="847">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/element_identification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2412">
+        <state relative-caret-position="3006">
           <caret line="167" column="25" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -1117,13 +1133,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/element_interaction.py">
+    <entry file="file://$PROJECT_DIR$/element_map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1801">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="432">
+          <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+          <folding />
         </state>
       </provider>
     </entry>

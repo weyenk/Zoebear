@@ -1,6 +1,9 @@
 import json
 #import
 
+'''Look at selenium.webdriver.remote.utils.dump_json and selenium.webdriver.remote.utils.load_json'''
+
+
 class ElementMap:
 
     def __init__(self, driver):
