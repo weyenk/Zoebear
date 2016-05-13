@@ -130,18 +130,6 @@ class DataDrivenEngine(ElementInteraction):
         while i < len(self.json_obj['data']):
             for obj in self.json_obj['data']:
                 if obj['order'] == i + 1: # Increase i by 1 to make json file human readable
-                    '''results = self.__parse_data(obj['identifier'])
-                    if obj['action'] == "click object":
-                        action = ei.click_object(results, obj['child_window'])
-                    elif obj['action'] == "enter text":
-                        action = ei.enter_text(results, obj['text_value'], obj['child_window'])
-                    elif obj['action'] == "select option":
-                        action = ei.select_option(results, obj['selection_value'], obj['selection_type'], obj['child_window'])
-                    elif obj['action'] == "handle alert":
-                        action = ei.handle_alert(obj['alert_action'], obj['child_window'])
-                    else:
-                        raise Exception("Step " + obj['order'] + " does not have a known action type.")
-            i += 1'''  # Increase counter
                     if obj['action'] == "click object":
                         action = ei.click_object(obj)
                     elif obj['action'] == "enter text":
