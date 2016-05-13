@@ -179,7 +179,7 @@ class DataDrivenEngine(ElementInteraction):
         # Build message
         message = MIMEText(email_body)
         message['Subject'] = email_subject
-        message['From'] = 'zoebear@geosolinc.com'
+        message['From'] = ''
 
         # Validate email address
         match = re.search(".*?\w+@\w+\.\w+$",email_address)
@@ -187,7 +187,7 @@ class DataDrivenEngine(ElementInteraction):
             message['To'] = email_address
         else:
             raise Exception('Email address is not valid')
-        mail = smtplib.SMTP('mail_internal.geosolinc.com')
+        mail = smtplib.SMTP('')
 
         # Send completed message
         mail.send_message(message)
