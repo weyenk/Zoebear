@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c75c8e66-07e8-4a45-afa2-34a87260636e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/element_interaction.py" afterPath="$PROJECT_DIR$/element_interaction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DemoScript.py" afterPath="$PROJECT_DIR$/DemoScript.py" />
     </list>
     <ignored path="Zoebear.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DemoScript.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DemoScript.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DemoScript.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -60,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="element_interaction.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="element_interaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/element_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="874">
@@ -117,11 +117,11 @@
       <list>
         <option value="$PROJECT_DIR$/OLC.py" />
         <option value="$PROJECT_DIR$/big_cat_country_script.json" />
-        <option value="$PROJECT_DIR$/DemoScript.py" />
         <option value="$PROJECT_DIR$/element_map.py" />
         <option value="$PROJECT_DIR$/data_driven_engine.py" />
         <option value="$PROJECT_DIR$/element_identification.py" />
         <option value="$PROJECT_DIR$/element_interaction.py" />
+        <option value="$PROJECT_DIR$/DemoScript.py" />
       </list>
     </option>
   </component>
@@ -608,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1463098498486</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Preparing data drive model">
+      <created>1463098529991</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1463098529991</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1131,31 +1138,11 @@
     </entry>
     <entry file="file:///usr/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py" />
     <entry file="file://$PROJECT_DIR$/wait_for_page_load.py" />
-    <entry file="file://$PROJECT_DIR$/DemoScript.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/element_map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_driven_engine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1175,6 +1162,26 @@
           <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_driven_engine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DemoScript.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>

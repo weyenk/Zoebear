@@ -3,9 +3,8 @@ import os
 __author__ = 'weyenk'
 email_address = ""
 
+DataDrivenEngine.run_script(DataDrivenEngine("demo", "Demo.json"))
 
-dda = DataDrivenEngine("demo", "Demo.json")
-dda.run_script()
 # os.remove("big_cat_country_script.json")
 
 
