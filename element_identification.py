@@ -1,7 +1,5 @@
 import re
-from selenium.selenium import selenium
-import pickle
-
+from element_map import ElementMap
 
 class ElementIdentification:
 
@@ -53,24 +51,21 @@ class ElementIdentification:
                     scrubbed_list.append(element)
             return scrubbed_list
 
-        def uniquely_identify_element(self, param_array):
+        def uniquely_identify_element(self, identifier_dict):
+
             # Establish variables
             matching_element = None
             all_found_elements = []
-            found_elements = []
             complex_match = False
 
-            # Build lists of elements
-            i = 0
-            j = 0
-            while i < len(param_array):
-                found_elements = self.find_element(param_array[i], param_array[i + 1])
+            # Convert dict of any size into a list of tuples
+            ident_items = identifier_dict.items()
+            for ident_item in ident_items:
+                found_elements = self.find_element(ident_item[0], ident_item[1])
                 if found_elements is not None:
                     found_elements = self.__remove_nonvisible_elements(found_elements)
                     if found_elements is not None:
                         all_found_elements.append(found_elements)
-                j += 1
-                i += 2
 
             # Determine element counts in each.  If either list is greater than one that mark complex match
             i = 0
@@ -81,16 +76,13 @@ class ElementIdentification:
                 else:
                     i += 1
 
-            # If neither element requires complex matching, then run basic match here
-            ''' This portion makes the assumption that only two lists exist which is incorrect'''
+            # Determine is only one element is found, or if additional matching is needed
             if len(all_found_elements) == 1:
                 matching_element = all_found_elements[0][0]
                 return matching_element
-            #elif all_found_elements[0] == all_found_elements[1]:
-            #    matching_element = all_found_elements[0][0]
-            #    return matching_element
             else:
                 matching_element = self.__complex_element_match(all_found_elements)
+                #ElementMap.map_page(ElementMap(self.driver))
                 return matching_element
 
         def __complex_element_match(self, all_found_elements):
@@ -98,13 +90,17 @@ class ElementIdentification:
             matching_element = None
             list_total = len(all_found_elements) - 1
             i = 0
+
             # Loop over all lists
             while i <= list_total:
                 j = 0
+
                 # Loop over all lists again
                 while j <= list_total:
+
                     # verify you are not comparing the list against itself
                     if i != j:
+
                         # compare two lists
                         for felement in all_found_elements[i]:
                             for selement in all_found_elements[j]:
@@ -134,7 +130,8 @@ class ElementIdentification:
 
         def find_html_for(self, for_id):
             label_list = self.driver.find_elements_by_xpath("//*[@for='" + for_id + "']")
-            # This needs work.  Currently its returning the first label
+
+            # If only a single list return it, else concat all labels found
             if not len(label_list) > 1 and not len(label_list) <= 0:
                 return label_list[0].get_attribute('innerText')
             else:
@@ -150,7 +147,6 @@ class ElementIdentification:
                     print('Could not find label for ' + for_id)
 
         def get_element_type(self, element):
-            # Find object type. Untested
             if element is not None:
                 if element.tag_name == 'a':
                     element_type = 'link'
