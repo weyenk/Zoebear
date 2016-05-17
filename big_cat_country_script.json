@@ -1,5 +1,15 @@
 {
-	"browsers":[{
+	"options":{
+		"output_location":"/home/weyenk/",
+		"script name":"Demo",
+		"email":"",
+		"analyst_name":"W Noah Kruswicki"
+	},
+	"browsers": [
+	{
+		"name":"firefox"
+	},
+	{
 		"name":"chrome",
 		"version":"50",
 		"location":"/usr/bin/chromedriver"
@@ -9,27 +19,39 @@
 	}],
 	"data":[
 	{
-		"identifier":[{
-			"id":"basic_search_query_footer",
-			"name":"q",
-			"class":"m-site-nav__search__input"
-		}],
+		"identifier":{
+			"href":"/search",
+			"class":"m-site-nav__search-link"
+		},
 		"order":1,
-		"action":"enter text",
-		"text value":"Myles Jack"
-	},
-	{
-		"identifier":[{
-			"class":"m-site-nav__search__submit"
-		}],
-		"order":2,
+		"child_window":false,
 		"action":"click object"
 	},
 	{
-		"identifier":[{
-			"text()":"Next"
-		}],
+		"identifier":{
+			"id":"basic_search_query_footer",
+			"name":"q",
+			"class":"m-site-nav__search__input"
+		},
+		"order":2,
+		"child_window":false,
+		"action":"enter text",
+		"text_value":"Myles Jack"
+	},
+	{
+		"identifier":{
+			"class":"m-site-nav__search__submit"
+		},
 		"order":3,
+		"child_window":false,
+		"action":"click object"
+	},
+	{
+		"identifier":{
+			"text()":"Next"
+		},
+		"order":4,
+		"child_window":false,
 		"action":"click object"
 	}
 	]
