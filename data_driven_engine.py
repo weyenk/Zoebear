@@ -33,7 +33,11 @@ class DataDrivenEngine(ElementInteraction):
         else:
             return None
 
-    def run_script(self):
+    def run_dom_driven_script(self):
+        # This will hold the dom driven script engine
+        pass
+
+    def run_ordered_script(self):
         start_time = time.time()
 
         # Create output file
