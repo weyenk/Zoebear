@@ -82,8 +82,10 @@ class ElementIdentification:
                 return matching_element
             else:
                 matching_element = self.__complex_element_match(all_found_elements)
-                #ElementMap.map_page(ElementMap(self.driver))
-                return matching_element
+                if matching_element == "no match":
+                    print(identifier_dict)
+                else:
+                    return matching_element
 
         def __complex_element_match(self, all_found_elements):
             matches = {}
@@ -125,8 +127,7 @@ class ElementIdentification:
             if matching_element is not None:
                 return matching_element[0]
             else:
-                test = self.driver.find_elements_by_xpath('//*[*]')
-                print('Not enough information given to uniquely identify element')
+                return "no match"
 
         def find_html_for(self, for_id):
             label_list = self.driver.find_elements_by_xpath("//*[@for='" + for_id + "']")

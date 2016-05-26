@@ -133,7 +133,8 @@ class DataDrivenEngine(ElementInteraction):
         # Loop through steps
         while i < len(self.json_obj['data']):
             for obj in self.json_obj['data']:
-                if obj['order'] == i + 1: # Increase i by 1 to make json file human readable
+                # if obj['order'] == i + 1: # Increase i by 1 to make json file human readable
+                    # Increase counter
                     if obj['action'] == "click object":
                         action = ei.click_object(obj)
                     elif obj['action'] == "enter text":
@@ -143,7 +144,7 @@ class DataDrivenEngine(ElementInteraction):
                     elif obj['action'] == "handle alert":
                         action = ei.handle_alert(obj)
                     else:
-                        raise Exception("Step " + obj['order'] + " does not have a known action type.")
+                        raise Exception("Unknown action type.")
             i += 1  # Increase counter
 
             # Report step to output file

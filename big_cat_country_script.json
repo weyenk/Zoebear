@@ -23,7 +23,6 @@
 			"href":"/search",
 			"class":"m-site-nav__search-link"
 		},
-		"order":1,
 		"child_window":false,
 		"action":"click object"
 	},
@@ -33,7 +32,6 @@
 			"name":"q",
 			"class":"m-site-nav__search__input"
 		},
-		"order":2,
 		"child_window":false,
 		"action":"enter text",
 		"text_value":"Myles Jack"
@@ -42,7 +40,6 @@
 		"identifier":{
 			"class":"m-site-nav__search__submit"
 		},
-		"order":3,
 		"child_window":false,
 		"action":"click object"
 	},
@@ -50,7 +47,6 @@
 		"identifier":{
 			"text()":"Next"
 		},
-		"order":4,
 		"child_window":false,
 		"action":"click object"
 	}

@@ -1,12 +1,13 @@
 from element_identification import ElementIdentification
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import Select
+from selenium.selenium import selenium
 import pickle
 import time
 import re
 
-class ElementInteraction(ElementIdentification):
 
+class ElementInteraction(ElementIdentification):
     def __init__(self, driver):
         self.driver = driver
         self.ei = ElementIdentification(self.driver)
@@ -31,6 +32,10 @@ class ElementInteraction(ElementIdentification):
         else:
             return False
 
+    def ajax_wait(self, timeout=5000):
+        condition = "self.driver.get_current_window().jQuery.active == 0"
+        selenium.wait_for_condition(condition, timeout)
+
     def __wait_for_post_back_to_complete(self, element, timeout=None):
         # Init state
         state = element.is_enabled()
@@ -43,6 +48,9 @@ class ElementInteraction(ElementIdentification):
             time.sleep(.2)
             state = element.is_enabled()
             current_time += .2
+            print(current_time)
+        if state is False and current_time == timeout:
+            raise Exception('Exceeded timeout waiting for element')
 
     def change_window_connection(self):
 
@@ -54,10 +62,10 @@ class ElementInteraction(ElementIdentification):
         step = obj.get('order')
         alert_action = obj.get('alert_action')
         if alert_action is None:
-            raise Exception('No child_window for step number' + str(step))
+            raise Exception('No child_window')
         child_window = obj.get('child_window')
         if child_window is None:
-            raise Exception('No child_window for step number' + str(step))
+            raise Exception('No child_window')
         alert_type = obj.get('alert_type')
         message_array = obj.get('message_array')
 
@@ -79,7 +87,8 @@ class ElementInteraction(ElementIdentification):
             if type(message_array) is 'list':
                 Alert(self.driver).authenticate(message_array[0], message_array[1])
             elif type(message_array) is 'dict':
-                Alert(self.driver).authenticate(message_array.get('username', 'Username not found'), message_array.get('password', 'Password not found'))
+                Alert(self.driver).authenticate(message_array.get('username', 'Username not found'),
+                                                message_array.get('password', 'Password not found'))
             action = 'Entered username and password into the alert.'
         elif alert_type == 'custom':
 
@@ -99,16 +108,16 @@ class ElementInteraction(ElementIdentification):
         step = obj.get('order')
         identifier_dict = obj.get('identifier')
         if identifier_dict is None:
-            raise Exception('No identifier for step number ' + str(step))
+            raise Exception('No identifier')
         child_window = obj.get('child_window')
         if child_window is None:
-            raise Exception('No child_window for step number' + str(step))
+            raise Exception('No child_window')
 
         element = self.ei.uniquely_identify_element(identifier_dict)
 
         # Report no element found
         if element is None:
-            action = 'No element found for step ' + str(step)
+            action = 'No element found'
             return action
 
         # Determine the human readable element name
@@ -129,6 +138,7 @@ class ElementInteraction(ElementIdentification):
             self.driver.execute_script('return arguments[0].scrollIntoView();', element)
             self.driver.execute_script('window.scrollBy(0, -150);')
 
+            element.is_enabled()
             element.click()
 
             # Determine if action changes browser count
@@ -143,22 +153,23 @@ class ElementInteraction(ElementIdentification):
         step = obj.get('order')
         identifier_dict = obj.get('identifier')
         if identifier_dict is None:
-            raise Exception('No identifier for step number ' + str(step))
+            raise Exception('No identifier')
         child_window = obj.get('child_window')
         if child_window is None:
-            raise Exception('No child_window for step number' + str(step))
+            raise Exception('No child_window')
         text_value = obj.get('text_value')
 
         element = self.ei.uniquely_identify_element(identifier_dict)
 
         # Report no element found
         if element is None:
-            action = 'No element found for step ' + str(step)
+            action = 'No element found'
             return action
 
         if element is not None:
             # Determine if element is visible
-            action = "Enter '" + str(text_value) + "' in the '" + str(self.find_html_for(element.get_attribute('id'))) + "' textbox"
+            action = "Enter '" + str(text_value) + "' in the '" + str(
+                self.find_html_for(element.get_attribute('id'))) + "' textbox"
 
             # Prepare element for action
             self.__wait_for_post_back_to_complete(element, obj.get('timeout'))
@@ -166,6 +177,7 @@ class ElementInteraction(ElementIdentification):
             self.driver.execute_script('window.scrollBy(0, -100);')
 
             # Clear existing text and send new text
+            element.is_enabled()
             element.clear()
             element.send_keys(text_value)
 
@@ -181,16 +193,16 @@ class ElementInteraction(ElementIdentification):
         step = obj.get('order')
         identifier_dict = obj.get('identifier')
         if identifier_dict is None:
-            raise Exception('No identifier for step number ' + str(step))
+            raise Exception('No identifier')
         child_window = obj.get('child_window')
         if child_window is None:
-            raise Exception('No child_window for step number' + str(step))
+            raise Exception('No child_window')
         selection_value = obj.get('selection_value')
         if selection_value is None:
-            raise Exception('No selection_value for step number' + str(step))
+            raise Exception('No selection_value')
         selection_type = obj.get('selection_type')
         if selection_type is None:
-            raise Exception('No selection_type for step number' + str(step))
+            raise Exception('No selection_type')
         multiline = obj.get('multiline')
         action = None
 
@@ -198,7 +210,7 @@ class ElementInteraction(ElementIdentification):
 
         # Report no element found
         if element is None:
-            action = 'No element found for step ' + str(step)
+            action = 'No element found'
             return action
 
         if element is not None:
@@ -213,25 +225,32 @@ class ElementInteraction(ElementIdentification):
 
             # Determine how we are interacting with the select
             if selection_type.lower() == "index":
-                action = "Select '" + acted_upon_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Select '" + acted_upon_options + "' from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.select_by_index(selection_value)
             elif selection_type.lower() == "text":
-                action = "Select '" + acted_upon_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Select '" + acted_upon_options + "' from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.select_by_visible_text(selection_value)
             elif selection_type.lower() == "value":
-                action = "Select '" + acted_upon_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Select '" + acted_upon_options + "' from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.select_by_value(selection_value)
             elif selection_type.lower() == "deindex":
-                action = "Deselect '" + acted_upon_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Deselect '" + acted_upon_options + "' from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_by_index(selection_value)
             elif selection_type.lower() == "detext":
-                action = "Deselect '" + acted_upon_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Deselect '" + acted_upon_options + "' from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_by_visible_text(selection_value)
             elif selection_type.lower() == "devalue":
-                action = "Deselect '" + acted_upon_options + "' from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Deselect '" + acted_upon_options + "' from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_by_value(selection_value)
             elif selection_type.lower == "deall":
-                action = "Deselected all values from the '" + str(self.find_html_for(element.get_attribute('id'))) + "' dropdown"
+                action = "Deselected all values from the '" + str(
+                    self.find_html_for(element.get_attribute('id'))) + "' dropdown"
                 selection.deselect_all()
             else:
                 # This should really just be reported and not raise an exception
