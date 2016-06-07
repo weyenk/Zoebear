@@ -59,7 +59,6 @@ class ElementInteraction(ElementIdentification):
 
     def handle_alert(self, obj):
         # Set parameters
-        step = obj.get('order')
         alert_action = obj.get('alert_action')
         if alert_action is None:
             raise Exception('No child_window')
