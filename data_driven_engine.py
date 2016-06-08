@@ -159,58 +159,91 @@ class DataDrivenEngine(ElementInteraction):
         self.__report_step(action, output)
 
     def __run_unordered_data(self, objs, ei, output):
-        id_list = {}
-        href_list = {}
-        name_list = {}
-        src_list = {}
-        alt_list = {}
-        title_list = {}
-        text_list = {}
-        i = 0
-        # Grab all tags and filter out all the tags we dont need
-        tags = self.driver.find_elements_by_tag_name('*')
-        for tag in tags:
-            if tag.tag_name == 'input' or tag.tag_name == 'a' or tag.tag_name == 'img' or tag.tag_name == 'span' or tag.tag_name == 'textbox' or tag.tag_name == 'button' or tag.tag_name == 'textarea' or tag.tag_name == 'password':
+
+        while 1 > 0:
+            id_list = {}
+            href_list = {}
+            name_list = {}
+            src_list = {}
+            alt_list = {}
+            title_list = {}
+            text_list = {}
+            value_list = {}
+            master_list = {}
+            i = 0
+            tags = None
+
+            # Grab all tags and filter out all the tags we dont need
+            tags = self.driver.find_elements_by_tag_name('a')
+            tags.extend(self.driver.find_elements_by_tag_name('input'))
+            tags.extend(self.driver.find_elements_by_tag_name('img'))
+            tags.extend(self.driver.find_elements_by_tag_name('span'))
+            tags.extend(self.driver.find_elements_by_tag_name('textbox'))
+            tags.extend(self.driver.find_elements_by_tag_name('button'))
+            tags.extend(self.driver.find_elements_by_tag_name('textarea'))
+            tags.extend(self.driver.find_elements_by_tag_name('password'))
+            tags.extend(self.driver.find_elements_by_tag_name('select'))
+
+            print('')
+            start = time.perf_counter()
+            # Create dictionaries with dom order
+            for tag in tags:
                 if not tag.get_attribute('type') == 'hidden':
-                    if tag.get_attribute('id') is not None or not tag.get_attribute('id') == '':
-                        id_list[tag.get_attribute('id')] = i
-                        if tag.get_attribute('herf') is not None or not tag.get_attribute('href') == '':
-                            href_list[tag.get_attribute('herf')] = i
-                        if tag.get_attribute('name') is not None or not tag.get_attribute('name') == '':
-                            name_list[tag.get_attribute('name')] = i
-                        if tag.get_attribute('src') is not None or not tag.get_attribute('src') == '':
-                            src_list[tag.get_attribute('src')] = i
-                        if tag.get_attribute('alt') is not None or not tag.get_attribute('alt') == '':
-                            alt_list[tag.get_attribute('alt')] = i
-                        if tag.get_attribute('title') is not None or not tag.get_attribute('title') == '':
-                            title_list[tag.get_attribute('title')] = i
-                        if tag.get_attribute('innerText') is not None or not tag.get_attribute('innerText') == '':
-                            text_list[tag.get_attribute('innerText')] = i
-                        i += 1
+                    id_list[tag.get_attribute('id')] = i
+                    href_list[tag.get_attribute('herf')] = i
+                    name_list[tag.get_attribute('name')] = i
+                    src_list[tag.get_attribute('src')] = i
+                    alt_list[tag.get_attribute('alt')] = i
+                    title_list[tag.get_attribute('title')] = i
+                    text_list[tag.get_attribute('innerText')] = i
+                    value_list[tag.get_attribute('value')] = i
+                    i += 1
 
+            print(time.perf_counter() - start)
+            # Compare unordered data against the created dictionaries
+            for obj in objs:
+                for ident_item in obj['identifier'].items():
+                    if ident_item[0] == 'id':
+                        if ident_item[1] in id_list:
+                            master_list[id_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'href':
+                        if ident_item[1] in href_list:
+                            master_list[href_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'name':
+                        if ident_item[1] in name_list:
+                            master_list[name_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'src':
+                        if ident_item[1] in src_list:
+                            master_list[src_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'alt':
+                        if ident_item[1] in alt_list:
+                            master_list[alt_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'title':
+                        if ident_item[1] in title_list:
+                            master_list[title_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'text()':
+                        if ident_item[1] in text_list:
+                            master_list[text_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'value':
+                        if ident_item[1] in value_list:
+                            master_list[value_list.get(ident_item[1])] = obj
 
-        ''' From here I would like to loop over the unordered list.  Any matches should be put in a dictionary where the
-            key is the i number and the identifiers are the values. The dictionary will then provide the order in which
-            the unordered list elements are fed into element_interaction'''
-
-        for obj in objs:
-            if not page_html == self.driver.page_source:
-                page_html = self.driver.page_source
-                continue
-            for ident_item in obj['identifier'].items():
-                if tag.get_attribute(ident_item[0]) == ident_item[1]:
-                    if obj['action'] == "click object":
-                        action = ei.click_object(obj)
-                    elif obj['action'] == "enter text":
-                        action = ei.enter_text(obj)
-                    elif obj['action'] == "select option":
-                        action = ei.select_option(obj)
-                    elif obj['action'] == "handle alert":
-                        action = ei.handle_alert(obj)
-                    else:
-                        raise Exception("Unknown action type.")
-                    self.__report_step(action, output)
-        print('test')
+            # Sort keys from master list to determine order
+            sorted_master = sorted(master_list.keys())
+            for key in sorted_master:
+                obj = master_list.get(key)
+                if obj['action'] == "click object":
+                    action = ei.click_object(obj)
+                elif obj['action'] == "enter text":
+                    action = ei.enter_text(obj)
+                elif obj['action'] == "select option":
+                    action = ei.select_option(obj)
+                elif obj['action'] == "handle alert":
+                    action = ei.handle_alert(obj)
+                else:
+                    raise Exception("Unknown action type.")
+                self.__report_step(action, output)
+            print('')
 
     def __create_output_file(self):
         options = self.json_obj['options']
