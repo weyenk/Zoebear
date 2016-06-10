@@ -9,6 +9,7 @@ import re
 import os
 #import cython
 
+
 class DataDrivenEngine(ElementInteraction):
 
     def __init__(self, name, path):
@@ -186,15 +187,15 @@ class DataDrivenEngine(ElementInteraction):
             p_text, c_text = Pipe()
             p_value, c_value = Pipe()
             p_class, c_class = Pipe()
-            p1 = Process(target=self.__create_id_list, args=(tags, c_id))
-            p2 = Process(target=self.__create_href_list, args=(tags, c_href))
-            p3 = Process(target=self.__create_name_list, args=(tags, c_name))
-            p4 = Process(target=self.__create_src_list, args=(tags, c_src))
-            p5 = Process(target=self.__create_alt_list, args=(tags, c_alt))
-            p6 = Process(target=self.__create_title_list, args=(tags, c_title))
-            p7 = Process(target=self.__create_text_list, args=(tags, c_text))
-            p8 = Process(target=self.__create_value_list, args=(tags, c_value))
-            p9 = Process(target=self.__create_class_list, args=(tags, c_class))
+            p1 = Process(target=ei.create_id_dict, args=(tags, c_id))
+            p2 = Process(target=ei.create_href_dict, args=(tags, c_href))
+            p3 = Process(target=ei.create_name_dict, args=(tags, c_name))
+            p4 = Process(target=ei.create_src_dict, args=(tags, c_src))
+            p5 = Process(target=ei.create_alt_dict, args=(tags, c_alt))
+            p6 = Process(target=ei.create_title_dict, args=(tags, c_title))
+            p7 = Process(target=ei.create_text_dict, args=(tags, c_text))
+            p8 = Process(target=ei.create_value_dict, args=(tags, c_value))
+            p9 = Process(target=ei.create_class_dict, args=(tags, c_class))
             p1.start()
             p2.start()
             p3.start()
@@ -222,18 +223,6 @@ class DataDrivenEngine(ElementInteraction):
             p7.join()
             p8.join()
             p9.join()
-            print('Threading Time: ' + str(time.perf_counter() - start))
-            start = time.perf_counter()
-            id_list2 = self.__create_id_list(tags)
-            href_list2 = self.__create_href_list(tags)
-            name_list2 = self.__create_name_list(tags)
-            src_list2 = self.__create_src_list(tags)
-            alt_list2 = self.__create_alt_list(tags)
-            title_list2 = self.__create_title_list(tags)
-            text_list2 = self.__create_text_list(tags)
-            value_list2 = self.__create_value_list(tags)
-            class_list2 = self.__create_class_list(tags)
-            print('Standard Time: ' + str(time.perf_counter() - start))
             print(time.perf_counter() - start)
 
             # Compare unordered data against the created dictionaries
@@ -276,124 +265,6 @@ class DataDrivenEngine(ElementInteraction):
 
             self.__run_ordered_data(ordered_objs, ei, output)
 
-    def __create_id_list(self, tags, pipe=None):
-        id_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                id_list[tag.get_attribute('id')] = i
-                i += 1
-        if pipe is None:
-            return id_list
-        else:
-            pipe.send(id_list)
-            pipe.close()
-
-
-    def __create_href_list(self,tags, pipe=None):
-        href_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                href_list[tag.get_attribute('herf')] = i
-                i += 1
-        if pipe is None:
-            return href_list
-        else:
-            pipe.send(href_list)
-            pipe.close()
-
-    def __create_name_list(self, tags, pipe=None):
-        name_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                name_list[tag.get_attribute('name')] = i
-                i += 1
-        if pipe is None:
-            return name_list
-        else:
-            pipe.send(name_list)
-            pipe.close()
-
-    def __create_src_list(self, tags, pipe=None):
-        src_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                src_list[tag.get_attribute('src')] = i
-                i += 1
-        if pipe is None:
-            return src_list
-        else:
-            pipe.send(src_list)
-            pipe.close()
-
-    def __create_alt_list(self, tags, pipe=None):
-        alt_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                alt_list[tag.get_attribute('alt')] = i
-                i += 1
-        if pipe is None:
-            return alt_list
-        else:
-            pipe.send(alt_list)
-            pipe.close()
-
-
-    def __create_title_list(self, tags, pipe=None):
-        title_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                title_list[tag.get_attribute('title')] = i
-                i += 1
-        if pipe is None:
-            return title_list
-        else:
-            pipe.send(title_list)
-            pipe.close()
-
-    def __create_text_list(self, tags, pipe=None):
-        text_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                text_list[tag.get_attribute('innerText')] = i
-                i += 1
-        if pipe is None:
-            return text_list
-        else:
-            pipe.send(text_list)
-            pipe.close()
-
-    def __create_value_list(self, tags, pipe=None):
-        value_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                value_list[tag.get_attribute('value')] = i
-                i += 1
-        if pipe is None:
-            return value_list
-        else:
-            pipe.send(value_list)
-            pipe.close()
-
-    def __create_class_list(self, tags, pipe=None):
-        class_list = {}
-        i = 0
-        for tag in tags:
-            if not tag.get_attribute('type') == 'hidden':
-                class_list[tag.get_attribute('class')] = i
-                i += 1
-        if pipe is None:
-            return class_list
-        else:
-            pipe.send(class_list)
-            pipe.close()
 
     def __create_output_file(self):
         options = self.json_obj['options']

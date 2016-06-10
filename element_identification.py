@@ -1,4 +1,5 @@
 import re
+from multiprocessing import Pipe
 from element_map import ElementMap
 
 class ElementIdentification:
@@ -163,3 +164,129 @@ class ElementIdentification:
 
         def is_page_ready(self):
             print('stop')
+
+        @staticmethod
+        def create_id_dict(tags: list, pipe=None):
+            id_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    id_dict[tag.get_attribute('id')] = i
+                    i += 1
+            if pipe is None:
+                return id_dict
+            else:
+                pipe.send(id_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_href_dict(tags: list, pipe=None):
+            href_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    href_dict[tag.get_attribute('herf')] = i
+                    i += 1
+            if pipe is None:
+                return href_dict
+            else:
+                pipe.send(href_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_name_dict(tags: list, pipe=None):
+            name_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    name_dict[tag.get_attribute('name')] = i
+                    i += 1
+            if pipe is None:
+                return name_dict
+            else:
+                pipe.send(name_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_src_dict(tags: list, pipe=None):
+            src_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    src_dict[tag.get_attribute('src')] = i
+                    i += 1
+            if pipe is None:
+                return src_dict
+            else:
+                pipe.send(src_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_alt_dict(tags: list, pipe=None):
+            alt_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    alt_dict[tag.get_attribute('alt')] = i
+                    i += 1
+            if pipe is None:
+                return alt_dict
+            else:
+                pipe.send(alt_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_title_dict(tags: list, pipe=None):
+            title_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    title_dict[tag.get_attribute('title')] = i
+                    i += 1
+            if pipe is None:
+                return title_dict
+            else:
+                pipe.send(title_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_text_dict(tags: list, pipe=None):
+            text_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    text_dict[tag.get_attribute('innerText')] = i
+                    i += 1
+            if pipe is None:
+                return text_dict
+            else:
+                pipe.send(text_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_value_dict(tags: list, pipe=None):
+            value_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    value_dict[tag.get_attribute('value')] = i
+                    i += 1
+            if pipe is None:
+                return value_dict
+            else:
+                pipe.send(value_dict)
+                pipe.close()
+
+        @staticmethod
+        def create_class_dict(tags: list, pipe=None):
+            class_dict = {}
+            i = 0
+            for tag in tags:
+                if not tag.get_attribute('type') == 'hidden':
+                    class_dict[tag.get_attribute('class')] = i
+                    i += 1
+            if pipe is None:
+                return class_dict
+            else:
+                pipe.send(class_dict)
+                pipe.close()
