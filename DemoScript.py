@@ -3,7 +3,7 @@ import os
 __author__ = 'weyenk'
 email_address = ""
 
-DataDrivenEngine.run_script(DataDrivenEngine("demo", "big_cat_country_script.json"))
+DataDrivenEngine.run_script(DataDrivenEngine("demo", "Demo.json"))
 
 
 
