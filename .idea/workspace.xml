@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c75c8e66-07e8-4a45-afa2-34a87260636e" name="Default" comment="">
+    <list default="true" id="c75c8e66-07e8-4a45-afa2-34a87260636e" name="Default" comment="Minor cleanup">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/big_cat_country_script.json" afterPath="$PROJECT_DIR$/big_cat_country_script.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_driven_engine.py" afterPath="$PROJECT_DIR$/data_driven_engine.py" />
     </list>
     <ignored path="Zoebear.iws" />
@@ -18,7 +19,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Zoebear$Unittests_in_OLC.coverage" NAME="Unittests in OLC Coverage Results" MODIFIED="1460928146254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Zoebear$Unittests_in_DemoScript.coverage" NAME="Unittests in DemoScript Coverage Results" MODIFIED="1464298562625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zoebear$Unittests_in_DemoScript.coverage" NAME="Unittests in DemoScript Coverage Results" MODIFIED="1465576152086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -36,11 +37,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="big_cat_country_script.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/big_cat_country_script.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DemoScript.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DemoScript.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -51,8 +62,8 @@
       <file leaf-file-name="data_driven_engine.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_driven_engine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="246" column="12" selection-start-line="246" selection-start-column="12" selection-end-line="246" selection-end-column="12" />
+            <state relative-caret-position="540">
+              <caret line="178" column="49" selection-start-line="178" selection-start-column="49" selection-end-line="178" selection-end-column="49" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -60,20 +71,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="big_cat_country_script.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/big_cat_country_script.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="element_interaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/element_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
+            <state relative-caret-position="4842">
               <caret line="275" column="75" selection-start-line="275" selection-start-column="75" selection-end-line="275" selection-end-column="75" />
               <folding />
             </state>
@@ -115,10 +116,10 @@
       <list>
         <option value="$PROJECT_DIR$/OLC.py" />
         <option value="$PROJECT_DIR$/element_map.py" />
-        <option value="$PROJECT_DIR$/DemoScript.py" />
-        <option value="$PROJECT_DIR$/big_cat_country_script.json" />
         <option value="$PROJECT_DIR$/element_identification.py" />
         <option value="$PROJECT_DIR$/element_interaction.py" />
+        <option value="$PROJECT_DIR$/DemoScript.py" />
+        <option value="$PROJECT_DIR$/big_cat_country_script.json" />
         <option value="$PROJECT_DIR$/data_driven_engine.py" />
       </list>
     </option>
@@ -160,20 +161,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Zoebear" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.5.1 (/usr/bin/python3.5) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -188,8 +182,32 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Problems">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Changed Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -671,38 +689,52 @@
       <option name="project" value="LOCAL" />
       <updated>1465337629485</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Additional work on framework for dom driven testing">
+      <created>1465424642098</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1465424642098</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Minor cleanup">
+      <created>1465576223745</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1465576223745</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 43m 18s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 11h 48m 20s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 45m 24s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 06m 55s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 45m 40s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 09m 01s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 46m 31s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 13m 02s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 49m 03s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 13m 26s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 49m 47s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 19m 59s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.17 at 17h 52m 38s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 23m 50s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.25 at 18h 04m 51s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 25m 33s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.26 at 17h 35m 21s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 29m 11s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_DemoScript - 2016.05.26 at 17h 36m 34s.xml">
+    <history-entry file="Unittests_in_DemoScript - 2016.06.10 at 12h 34m 52s.xml">
       <configuration name="Unittests in DemoScript" configurationId="tests" />
     </history-entry>
   </component>
@@ -719,25 +751,25 @@
     <frame x="74" y="30" width="1846" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29365963" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29755282" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3387978" sideWeight="0.5030675" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33844468" sideWeight="0.4969325" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31538463" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3154436" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -752,8 +784,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="latest work in progress" />
-    <MESSAGE value="Moved is_element_present into ElementIdentification class" />
     <MESSAGE value="Added additional output to select option" />
     <MESSAGE value="Minor refactor" />
     <MESSAGE value="Added pickling" />
@@ -777,7 +807,9 @@
     <MESSAGE value="Started adding DOM framework for DOM driven scripts" />
     <MESSAGE value="Removed step order and added additional ajax wait framework" />
     <MESSAGE value="Basic framework for dom driven testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic framework for dom driven testing" />
+    <MESSAGE value="Additional work on framework for dom driven testing" />
+    <MESSAGE value="Minor cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -795,21 +827,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="51" />
+      <option name="time" value="68" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/element_identification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="96" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/element_map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -1174,27 +1196,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DemoScript.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/big_cat_country_script.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/element_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
+        <state relative-caret-position="4842">
           <caret line="275" column="75" selection-start-line="275" selection-start-column="75" selection-end-line="275" selection-end-column="75" />
           <folding />
         </state>
@@ -1210,10 +1214,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/lib/python3.5/json/decoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="354" column="0" selection-start-line="354" selection-start-column="0" selection-end-line="354" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/big_cat_country_script.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DemoScript.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_driven_engine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="246" column="12" selection-start-line="246" selection-start-column="12" selection-end-line="246" selection-end-column="12" />
+        <state relative-caret-position="540">
+          <caret line="178" column="49" selection-start-line="178" selection-start-column="49" selection-end-line="178" selection-end-column="49" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

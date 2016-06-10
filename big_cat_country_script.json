@@ -7,48 +7,47 @@
 	},
 	"browsers": [
 	{
-		"name":"firefox"
-	},
-	{
 		"name":"chrome",
 		"version":"50",
 		"location":"/usr/bin/chromedriver"
 	}],
 	"sites":[{
-		"url":"http://www.bigcatcountry.com/"
+		"url":"https://www.wikipedia.org/"
 	}],
 	"data":[
-	{
-		"identifier":{
-			"href":"/search",
-			"class":"m-site-nav__search-link"
-		},
-		"child_window":false,
-		"action":"click object"
-	},
-	{
-		"identifier":{
-			"id":"basic_search_query_footer",
-			"name":"q",
-			"class":"m-site-nav__search__input"
-		},
-		"child_window":false,
-		"action":"enter text",
-		"text_value":"Myles Jack"
-	},
-	{
-		"identifier":{
-			"class":"m-site-nav__search__submit"
-		},
-		"child_window":false,
-		"action":"click object"
-	},
-	{
-		"identifier":{
-			"text()":"Next"
-		},
-		"child_window":false,
-		"action":"click object"
-	}
+		{
+			"unordered": [
+				{
+					"identifier": {
+						"class": "pure-button pure-button-primary-progressive"
+					},
+					"child_window": false,
+					"action": "click object"
+				},
+				{
+					"identifier": {
+						"id": "searchInput",
+						"name": "search"
+					},
+					"child_window": false,
+					"action": "enter text",
+					"text_value": "Myles Jack"
+				},
+				{
+					"identifier": {
+						"href": "http://www.uclabruins.com/ViewArticle.dbml?DB_OEM_ID=30500&ATCLID=208818570"
+					},
+					"child_window": false,
+					"action": "click object"
+				},
+				{
+					"identifier": {
+						"href": "http://www.nmnathletics.com/main/CalendarSchedule.dbml?&DB_OEM_ID=30500"
+					},
+					"child_window": false,
+					"action": "click object"
+				}
+			]
+		}
 	]
 }

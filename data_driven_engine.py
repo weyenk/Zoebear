@@ -33,7 +33,7 @@ class DataDrivenEngine(ElementInteraction):
         else:
             return None
 
-    def run_ordered_script(self):
+    def run_script(self):
         start_time = time.time()
 
         # Create output file
@@ -161,17 +161,7 @@ class DataDrivenEngine(ElementInteraction):
     def __run_unordered_data(self, objs, ei, output):
 
         while 1 > 0:
-            id_list = {}
-            href_list = {}
-            name_list = {}
-            src_list = {}
-            alt_list = {}
-            title_list = {}
-            text_list = {}
-            value_list = {}
             master_list = {}
-            i = 0
-            tags = None
 
             # Grab all tags and filter out all the tags we dont need
             tags = self.driver.find_elements_by_tag_name('a')
@@ -183,23 +173,20 @@ class DataDrivenEngine(ElementInteraction):
             tags.extend(self.driver.find_elements_by_tag_name('textarea'))
             tags.extend(self.driver.find_elements_by_tag_name('password'))
             tags.extend(self.driver.find_elements_by_tag_name('select'))
+            tags.extend(self.driver.find_elements_by_tag_name('button'))
 
-            print('')
             start = time.perf_counter()
-            # Create dictionaries with dom order
-            for tag in tags:
-                if not tag.get_attribute('type') == 'hidden':
-                    id_list[tag.get_attribute('id')] = i
-                    href_list[tag.get_attribute('herf')] = i
-                    name_list[tag.get_attribute('name')] = i
-                    src_list[tag.get_attribute('src')] = i
-                    alt_list[tag.get_attribute('alt')] = i
-                    title_list[tag.get_attribute('title')] = i
-                    text_list[tag.get_attribute('innerText')] = i
-                    value_list[tag.get_attribute('value')] = i
-                    i += 1
-
+            id_list = self.__create_id_list(tags)
+            href_list = self.__create_href_list(tags)
+            name_list = self.__create_name_list(tags)
+            src_list = self.__create_src_list(tags)
+            alt_list = self.__create_alt_list(tags)
+            title_list = self.__create_title_list(tags)
+            text_list = self.__create_text_list(tags)
+            value_list = self.__create_value_list(tags)
+            class_list = self.__create_class_list(tags)
             print(time.perf_counter() - start)
+
             # Compare unordered data against the created dictionaries
             for obj in objs:
                 for ident_item in obj['identifier'].items():
@@ -227,23 +214,100 @@ class DataDrivenEngine(ElementInteraction):
                     elif ident_item[0] == 'value':
                         if ident_item[1] in value_list:
                             master_list[value_list.get(ident_item[1])] = obj
+                    elif ident_item[0] == 'class':
+                        if ident_item[1] in class_list:
+                            master_list[class_list.get(ident_item[1])] = obj
 
             # Sort keys from master list to determine order
+            ordered_objs = []
             sorted_master = sorted(master_list.keys())
             for key in sorted_master:
                 obj = master_list.get(key)
-                if obj['action'] == "click object":
-                    action = ei.click_object(obj)
-                elif obj['action'] == "enter text":
-                    action = ei.enter_text(obj)
-                elif obj['action'] == "select option":
-                    action = ei.select_option(obj)
-                elif obj['action'] == "handle alert":
-                    action = ei.handle_alert(obj)
-                else:
-                    raise Exception("Unknown action type.")
-                self.__report_step(action, output)
-            print('')
+                ordered_objs.append(obj)
+
+            self.__run_ordered_data(ordered_objs, ei, output)
+
+    def __create_id_list(self, tags):
+        id_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                id_list[tag.get_attribute('id')] = i
+                i += 1
+        return id_list
+
+    def __create_href_list(self,tags):
+        href_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                href_list[tag.get_attribute('herf')] = i
+                i += 1
+        return href_list
+
+    def __create_name_list(self, tags):
+        name_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                name_list[tag.get_attribute('name')] = i
+                i += 1
+        return name_list
+
+    def __create_src_list(self, tags):
+        src_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                src_list[tag.get_attribute('src')] = i
+                i += 1
+        return src_list
+
+    def __create_alt_list(self, tags):
+        alt_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                alt_list[tag.get_attribute('alt')] = i
+                i += 1
+        return alt_list
+
+
+    def __create_title_list(self, tags):
+        title_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                title_list[tag.get_attribute('title')] = i
+                i += 1
+        return title_list
+
+    def __create_text_list(self, tags):
+        text_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                text_list[tag.get_attribute('innerText')] = i
+                i += 1
+        return text_list
+
+    def __create_value_list(self, tags):
+        value_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                value_list[tag.get_attribute('value')] = i
+                i += 1
+        return value_list
+
+    def __create_class_list(self, tags):
+        class_list = {}
+        i = 0
+        for tag in tags:
+            if not tag.get_attribute('type') == 'hidden':
+                class_list[tag.get_attribute('class')] = i
+                i += 1
+        return class_list
 
     def __create_output_file(self):
         options = self.json_obj['options']
